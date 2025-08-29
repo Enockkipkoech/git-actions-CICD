@@ -22,12 +22,27 @@
 ## Triggers
 
 - Schedule can usa cron expression to trigger a workflow ata a specific time or day.
-- on: 
+- on:
   schedule:
-    - cron: '0 0 * * *' # At midnight every day
-    - cron: '0 12 * * *' # At noon every day
 
-    jobs: 
+  - cron: '0 0 \* \* \*' # At midnight every day
+  - cron: '0 12 \* \* \*' # At noon every day
+
+  jobs:
 
 ## Single vs Multiple Events
+
+## Manual Events
+
+- triggered manually via Github UI, Github CLI or Github Rest API
+- workflow_dispatch event is used.
+  ` on: workflow_dispatch`
+- You can define upto 10 inputs for a workflow_dispatch. eng name, greeting, data etc
+- Commands: >gh workflow run [workflow name.yml/ID/name]
+  Example command
+  ````gh workflow run my-workflow.yml \
+  -f name=value \
+  -f greeting=hello \
+  -F data=@myfile.txt ```
+  ````
 
